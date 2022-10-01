@@ -17,27 +17,11 @@
   </el-card>
 </template>
 
-<script>
+<script setup>
 import TypeContent from "./TypeContent.vue";
 
-export default {
-  props: {
-    title: {
-      type: String,
-      default: '',
-      des: '标题名'
-    },
-    desc: {
-      type: String,
-      default: '',
-      des: '描述信息'
-    },
-  },
-  setup(props, context) {
+defineProps(['title','desc'])
 
-    return {}
-  }
-}
 
 </script>
 

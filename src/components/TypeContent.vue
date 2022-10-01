@@ -19,20 +19,9 @@
   </div>
 </template>
 
-<script>
-export default {
-  props: {
-    title: {
-      type: String,
-      default: '',
-      des: '标题名'
-    }
-  },
-  setup(props, context) {
+<script setup>
+defineProps(['title'])
 
-    return {}
-  }
-}
 </script>
 
 <style scoped>

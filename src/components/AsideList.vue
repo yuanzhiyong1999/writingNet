@@ -9,42 +9,38 @@
         <span class="head_text">{{ title }}</span>
       </div>
     </template>
-    <div v-for="o in 10" :key="o" class="card_item">
+    <div v-for="o in asideListData" :key="o" class="card_item">
       <el-icon :size="20" style="padding: 0 5px">
         <Edit/>
       </el-icon>
-      {{ 'List item ' + o }}
+      {{ o }}
     </div>
   </el-card>
 
 
 </template>
 
-<script>
-export default {
-  props: {
-    title: {
-      type: String,
-      default: '热门排序',
-      des: '标题'
-    },
-    cardHeight: {
-      type: Number,
-      default: '',
-      des: '卡片高度'
-    },
-  },
-  setup(props, context) {
+<script setup>
+import axios from "axios";
 
-    return {}
-  }
+import {reactive, ref} from "vue";
+
+let asideListData = ref(['dfgrgerg', 'dfgdsfdsfdsf', 'sdfdsfdfdsf'])
+defineProps(['title', 'cardHeight'])
+
+function getList() {
+  axios.get("https://console-mock.apipost.cn/mock/eaab8663-cc5b-47c4-9292-e10c043794aa/rank?apipost_id=51c177")
+      .then(res => {
+        // console.log(res.data.data)
+        asideListData.value = res.data.data
+      })
 }
+getList()
+
 </script>
 
 
 <style scoped>
-
-
 .box-card {
   width: 340px;
   margin: 10px 0 10px;
@@ -64,7 +60,9 @@ export default {
   font-size: large;
 }
 
-.card_item{
+.card_item {
   padding-bottom: 5px;
+  display: flex;
+  align-items: center;
 }
 </style>

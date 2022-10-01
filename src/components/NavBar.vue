@@ -4,6 +4,7 @@
         :default-active="useRouter().currentRoute.value.path"
         mode="horizontal"
         @select="handleSelect"
+        :ellipsis="false"
     >
       <el-row :gutter="10">
         <el-col :span="4">
@@ -61,7 +62,7 @@ import router from "../router/index.js";
 
 const handleSelect = (key, keyPath) => {
   router.push(key)
-  console.log(key, keyPath)
+  // console.log(key, keyPath)
 
 }
 </script>
@@ -70,12 +71,9 @@ const handleSelect = (key, keyPath) => {
 .box {
   margin-top: 20px;
 }
-/*.el-menu{*/
-/*  flex-direction: column !important;*/
-/*}*/
 
-/*.el-menu--horizontal{*/
-/*  flex-direction: column !important;*/
-/*}*/
+.el-menu--horizontal{
+  flex-direction: column;
+}
 
 </style>

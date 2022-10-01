@@ -9,7 +9,7 @@
         <el-button class="button more" link type="info" size="small" style="float: right">更多</el-button>
       </div>
     </template>
-    <!--    <div v-for="o in 4" :key="o" class="text item">{{ 'List item ' + o }}</div>-->
+
     <el-row :gutter="20">
       <el-col :span="12">
         <div v-for="o in 8" :key="o" class="card_item">
@@ -41,20 +41,10 @@
   </el-card>
 </template>
 
-<script>
-export default {
-  props: {
-    title: {
-      type: String,
-      default: '',
-      des: '标题名'
-    }
-  },
-  setup(props, context) {
+<script setup>
 
-    return {}
-  }
-}
+defineProps(['title'])
+
 </script>
 
 <style scoped>

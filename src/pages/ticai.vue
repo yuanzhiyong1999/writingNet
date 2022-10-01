@@ -9,8 +9,8 @@
         <el-divider direction="vertical"/>
       </el-col>
       <el-col :span="7">
-        <AsideListVue :cardHeight="400" :title="AsideListTile[0]"></AsideListVue>
-        <AsideListVue :cardHeight="400" :title="AsideListTile[1]"></AsideListVue>
+        <AsideListVue cardHeight="400" :title="AsideListTile[0]"></AsideListVue>
+        <AsideListVue cardHeight="400" :title="AsideListTile[1]"></AsideListVue>
       </el-col>
     </el-row>
     <el-row>

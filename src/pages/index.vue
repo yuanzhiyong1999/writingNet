@@ -10,7 +10,7 @@
           <el-divider direction="vertical"/>
         </el-col>
         <el-col :span="7">
-          <AsideListVue :cardHeight="700"></AsideListVue>
+          <AsideListVue cardHeight="700" :title=ranktitle></AsideListVue>
         </el-col>
       </el-row>
     </div>
@@ -18,13 +18,13 @@
     <div class=" block other_block">
       <el-row :gutter="10">
         <el-col :span="16">
-          <BlockCard :title="title[0]"></BlockCard>
+          <BlockCard :title=cardtitle[0]></BlockCard>
         </el-col>
         <el-col :span="1">
           <el-divider direction="vertical"/>
         </el-col>
         <el-col :span="7">
-          <AsideListVue :cardHeight="400"></AsideListVue>
+          <AsideListVue cardHeight="400" :title=ranktitle></AsideListVue>
         </el-col>
       </el-row>
     </div>
@@ -32,13 +32,13 @@
     <div class=" block other_block">
       <el-row :gutter="10">
         <el-col :span="16">
-          <BlockCard :title="title[1]"></BlockCard>
+          <BlockCard :title=cardtitle[1]></BlockCard>
         </el-col>
         <el-col :span="1">
           <el-divider direction="vertical"/>
         </el-col>
         <el-col :span="7">
-          <AsideListVue :cardHeight="400"></AsideListVue>
+          <AsideListVue cardHeight="400" :title=ranktitle></AsideListVue>
         </el-col>
       </el-row>
     </div>
@@ -46,27 +46,17 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import AsideListVue from '~/components/AsideList.vue'
 import Carousel from '~/components/Carousel.vue'
 import BottomListVue1 from '~/components/BottomList1.vue'
 import BlockCard from '~/components/BlockCard.vue'
+import {ref} from "vue";
 
-let title =["议论文","说明文"]
+let ranktitle = "热门排序"
 
-export default {
-  components:{
-    BlockCard,
-    AsideListVue,
-    Carousel,
-    BottomListVue1
-  },
-  setup() {
-    return{
-      title
-    }
-  }
-}
+let cardtitle =["议论文","说明文"]
+
 
 </script>
 
