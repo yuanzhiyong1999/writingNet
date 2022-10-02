@@ -1,6 +1,5 @@
 import {defineConfig} from 'vite'
 import vue from '@vitejs/plugin-vue'
-import WindiCSS from 'vite-plugin-windicss'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
@@ -27,7 +26,6 @@ export default defineConfig({
     base:'./',  //打包路径
     plugins: [
         vue(),
-        WindiCSS(),
         AutoImport({
             resolvers: [ElementPlusResolver(),
                 // Auto import icon components

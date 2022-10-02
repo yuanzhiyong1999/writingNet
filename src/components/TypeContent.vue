@@ -7,13 +7,12 @@
       <span class="head_text">{{ title }}</span>
       <el-button class="button more" link type="info" size="small">查看更多</el-button>
     </div>
-    <!--    <div v-for="o in 4" :key="o" class="text item">{{ 'List item ' + o }}</div>-->
 
     <div v-for="o in 5" :key="o" class="card_item">
       <el-icon :size="15" style="padding: 0 5px">
         <Edit/>
       </el-icon>
-      <el-link :href="o" target="_blank">{{ 'List item ' + o }}</el-link>
+      <el-link :href="o" target="_blank">{{ 'List item ' + o}}</el-link>
       <span class="time">1564</span>
     </div>
   </div>

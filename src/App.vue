@@ -1,6 +1,6 @@
 <template>
 
-  <div class="base">
+  <div class="base" v-if="$route.meta.showOther">
     <el-container>
       <el-header height="150px">
         <Header></Header>
@@ -11,6 +11,8 @@
       <el-footer height="50px">Footer</el-footer>
     </el-container>
   </div>
+
+  <router-view v-if="!$route.meta.showOther"></router-view>
 
 
 </template>
