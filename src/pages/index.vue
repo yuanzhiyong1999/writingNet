@@ -42,7 +42,7 @@
         </el-col>
       </el-row>
     </div>
-
+{{$store.state.user}}
   </div>
 </template>
 

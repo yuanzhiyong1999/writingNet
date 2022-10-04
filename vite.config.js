@@ -12,7 +12,7 @@ export default defineConfig({
         proxy:{
             // 选项写法
             '/api': {
-                target: 'http://ceshi13.dishait.cn',
+                target: 'http://localhost:8080',
                 changeOrigin: true,
                 rewrite: (path) => path.replace(/^\/api/, '')
             },

@@ -16,14 +16,14 @@
       </div>
       <el-form :model="form" class="form">
         <el-form-item>
-          <el-input v-model="form.username" placeholder="请输入用户名">
+          <el-input v-model="form.account" placeholder="请输入用户名">
             <template #prefix>
               <el-icon ><User /></el-icon>
             </template>
           </el-input>
         </el-form-item>
         <el-form-item>
-          <el-input v-model="form.password" placeholder="请输入密码">
+          <el-input v-model="form.password" placeholder="请输入密码" show-password>
             <template #prefix>
               <el-icon ><Lock /></el-icon>
             </template>
@@ -40,14 +40,33 @@
 
 <script setup>
 import { reactive } from 'vue'
+import {login} from "../api/index.js";
+import {useStore} from 'vuex'
+import {toast} from "../composables/util.js";
+import {setToken} from "../composables/auth.js";
+import router from "../router/index.js";
+
+const store = useStore()
 
 const form = reactive({
-  username:"",
+  account:"",
   password:""
 })
 
+
 const onSubmit = () => {
-  console.log('submit!')
+
+  login(form).then(res=>{
+    if (res.success){
+      router.push('/')
+      setToken(res.data)
+    }else {
+      toast(res.msg,'error')
+    }
+  })
+
+
+
 }
 </script>
 

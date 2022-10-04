@@ -1,14 +1,11 @@
 import axios from '~/axios'
 
-export function login(username,password){
-    return axios.post("/admin/login",{
-        username,
-        password
-    })
+export function login(data){
+    return axios.post("/user/login",data)
 }
 
 export function getinfo(){
-    return axios.post("/admin/getinfo")
+    return axios.get("/user/getCurrentUserInfo")
 }
 
 export function getRank(){
