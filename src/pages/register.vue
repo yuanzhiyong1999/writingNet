@@ -11,12 +11,12 @@
       <h2 style="font-weight: bold;font-size: 1.875rem;color: #1f2937">欢迎回来</h2>
       <div class="login-desc">
         <span class="desc-line"></span>
-        <span>账号密码登录</span>
+        <span>账号密码注册</span>
         <span class="desc-line"></span>
       </div>
       <el-form :model="form" class="form">
         <el-form-item>
-          <el-input v-model="form.account" placeholder="请输入用户名">
+          <el-input v-model="form.account" placeholder="请输入账号">
             <template #prefix>
               <el-icon ><User /></el-icon>
             </template>
@@ -29,9 +29,25 @@
             </template>
           </el-input>
         </el-form-item>
+        <el-form-item>
+          <el-input v-model="form.name" placeholder="请输入姓名">
+            <template #prefix>
+              <el-icon ><User /></el-icon>
+            </template>
+          </el-input>
+        </el-form-item>
+        <el-form-item>
+          <el-select v-model="form.sex" placeholder="请选择性别">
+            <template #prefix>
+              <el-icon><Male /></el-icon>
+            </template>
+            <el-option label="男" value="man" />
+            <el-option label="女" value="woman" />
+          </el-select>
+        </el-form-item>
 
         <el-form-item>
-          <el-button style="width: 250px;" color="#626aef" round type="primary" @click="onSubmit">登录</el-button>
+          <el-button style="width: 250px;" color="#626aef" round type="primary" @click="onSubmit">注册</el-button>
         </el-form-item>
       </el-form>
     </el-col>
@@ -40,24 +56,30 @@
 
 <script setup>
 import { reactive } from 'vue'
-import {login} from "../api/index.js";
+import {register} from "../api/index.js";
 import {toast} from "../composables/util.js";
-import {setToken} from "../composables/auth.js";
+
 import router from "../router/index.js";
 
 
 const form = reactive({
   account:"",
-  password:""
+  password:"",
+  name:"",
+  sex:""
 })
 
 
 const onSubmit = () => {
 
-  login(form).then(res=>{
+  register(form).then(res=>{
     if (res.success){
-      router.push('/')
-      setToken(res.data)
+      toast("注册成功,即将跳转到登录页")
+      setTimeout(()=>{
+        //需要延迟的代码 :3秒后延迟跳转到首页，可以加提示什么的
+        router.push('/login')
+        //延迟时间：3秒
+      },3000)
     }else {
       toast(res.msg,'error')
     }
@@ -106,7 +128,11 @@ const onSubmit = () => {
   margin-left: 5px;
   margin-right: 5px;
 }
+
 .form{
+  width: 250px;
+}
+.el-select{
   width: 250px;
 }
 </style>

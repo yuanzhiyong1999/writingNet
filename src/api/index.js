@@ -8,6 +8,10 @@ export function getinfo(){
     return axios.get("/user/getCurrentUserInfo")
 }
 
+export function register(data){
+    return axios.post("/user/register",data)
+}
+
 export function getRank(){
     return axios.get("/article/list")
 }

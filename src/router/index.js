@@ -24,6 +24,15 @@ const routes = [
         }
     },
     {
+        path: '/register',
+        name: 'register',
+        component: () => import('../pages/register.vue'),
+        meta:{
+            showOther: false,
+            title:'注册'
+        }
+    },
+    {
         path: '/:pathMatch(.*)*',
         name: 'NotFound',
         component: () => import('../pages/404.vue'),
