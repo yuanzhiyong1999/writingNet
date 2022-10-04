@@ -1,17 +1,31 @@
 <template>
   <div>
     <el-carousel :interval="4000" type="card" height="300px" >
-      <el-carousel-item v-for="item in 6" :key="item">
-        <h3 text="2xl" justify="center">{{ item }}</h3>
+      <el-carousel-item v-for="item in searchData" :key="item">
+        <img :src="item" alt="">
       </el-carousel-item>
     </el-carousel>
   </div>
 </template>
 
-<script>
+<script setup>
 import { ref } from "vue";
+import {getCarousel} from "../api/index.js";
+import {toast} from "../composables/util.js";
 
-const searchData = ref("");
+let searchData = ref(['http://cup.lijx.cloud/img/avatar/2022/7/17/000a5b5d-be3a-4eac-8eca-dcec6ad4f9b2',
+  'http://cup.lijx.cloud/img/gallery/2022/7/1/1cf91f1e-9b4d-4a15-84c6-b6dac167bb43',
+  'http://cup.lijx.cloud/img/gallery/2022/7/1/27986ad7-86a9-499b-b421-c6fe908403ff',
+  'http://cup.lijx.cloud/img/gallery/2022/7/1/284e14f9-829b-4ebd-bb47-68f0958a62ad'])
+
+getCarousel().then(res=>{
+  if (res.success)
+    searchData.value = res.data;
+  else
+    toast(res.msg,'error')
+})
+
+
 </script>
 
 <style scoped>

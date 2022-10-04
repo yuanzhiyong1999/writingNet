@@ -4,13 +4,13 @@
       <el-row :gutter="10">
         <el-col :span="16">
           <Carousel></Carousel>
-          <BottomListVue1></BottomListVue1>
+          <BottomListVue></BottomListVue>
         </el-col>
         <el-col :span="1">
           <el-divider direction="vertical"/>
         </el-col>
         <el-col :span="7">
-          <AsideListVue cardHeight="700" :title=ranktitle></AsideListVue>
+          <AsideListVue cardHeight="700" :title=ranktitle[0]></AsideListVue>
         </el-col>
       </el-row>
     </div>
@@ -24,7 +24,7 @@
           <el-divider direction="vertical"/>
         </el-col>
         <el-col :span="7">
-          <AsideListVue cardHeight="400" :title=ranktitle></AsideListVue>
+          <AsideListVue cardHeight="400" :title=ranktitle[1]></AsideListVue>
         </el-col>
       </el-row>
     </div>
@@ -38,7 +38,7 @@
           <el-divider direction="vertical"/>
         </el-col>
         <el-col :span="7">
-          <AsideListVue cardHeight="400" :title=ranktitle></AsideListVue>
+          <AsideListVue cardHeight="400" :title=ranktitle[2]></AsideListVue>
         </el-col>
       </el-row>
     </div>
@@ -49,11 +49,11 @@
 <script setup>
 import AsideListVue from '~/components/AsideList.vue'
 import Carousel from '~/components/Carousel.vue'
-import BottomListVue1 from '~/components/BottomList1.vue'
+import BottomListVue from '~/components/BottomList.vue'
 import BlockCard from '~/components/BlockCard.vue'
 import {ref} from "vue";
 
-let ranktitle = "热门排序"
+let ranktitle = ["热门排序","议论文热榜","说明文热榜"]
 
 let cardtitle =["议论文","说明文"]
 

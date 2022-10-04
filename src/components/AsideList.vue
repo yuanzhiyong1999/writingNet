@@ -13,7 +13,7 @@
       <el-icon :size="20" style="padding: 0 5px">
         <Edit/>
       </el-icon>
-      {{ o }}
+      <el-link :href="o.url" target="_blank">{{ o.title }}</el-link>
     </div>
   </el-card>
 
@@ -21,21 +21,71 @@
 </template>
 
 <script setup>
-import axios from "axios";
+import {ref} from "vue";
+import {getRank} from "../api/index.js";
 
-import {reactive, ref} from "vue";
+const params = defineProps(['title', 'cardHeight'])
 
-let asideListData = ref(['dfgrgerg', 'dfgdsfdsfdsf', 'sdfdsfdfdsf'])
-defineProps(['title', 'cardHeight'])
+let asideListData = ref([
+  {
+    "id": 648,
+    "title": "带合路例",
+    "url": "http://www.baidu.com"
+  },
+  {
+    "id": 976,
+    "title": "们压她车",
+    "url": "http://www.baidu.com"
+  },
+  {
+    "id": 843,
+    "title": "里样于次上百",
+    "url": "http://www.baidu.com"
+  },
+  {
+    "id": 797,
+    "title": "山利员科",
+    "url": "http://www.baidu.com"
+  },
+  {
+    "id": 593,
+    "title": "看可省者",
+    "url": "http://www.baidu.com"
+  },
+  {
+    "id": 349,
+    "title": "将都东格",
+    "url": "http://www.baidu.com"
+  },
+  {
+    "id": 598,
+    "title": "层王影北存",
+    "url": "http://www.baidu.com"
+  },
+  {
+    "id": 753,
+    "title": "看精办总",
+    "url": "http://www.baidu.com"
+  },
+  {
+    "id": 722,
+    "title": "参类高龙局料",
+    "url": "http://www.baidu.com"
+  },
+  {
+    "id": 574,
+    "title": "观持委山色",
+    "url": "http://www.baidu.com"
+  }
+],)
 
-function getList() {
-  axios.get("https://console-mock.apipost.cn/mock/eaab8663-cc5b-47c4-9292-e10c043794aa/rank?apipost_id=51c177")
-      .then(res => {
-        // console.log(res.data.data)
-        asideListData.value = res.data.data
-      })
-}
-getList()
+getRank(params.title).then(res=>{
+  if (res.success)
+    asideListData.value = res.data
+  else
+    toast(res.msg,'error')
+})
+
 
 </script>
 

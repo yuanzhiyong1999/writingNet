@@ -74,9 +74,9 @@ router.beforeEach(async (to, from, next) => {
     // }
 
     // 如果用户登录了 自动获取用户信息 并存储在vuex
-    if (token){
-       await store.dispatch("getinfo")
-    }
+    // if (token){
+    //    await store.dispatch("getinfo")
+    // }
 
     next()
 })
